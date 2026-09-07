@@ -1,0 +1,42 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "penny_dialog",
+      "camelcase": "PennyDialog",
+      "title": "Penny Dialog",
+      "scope": "source.penny_dialog",
+      "file-types": [
+        "penny-dialog"
+      ],
+      "injection-regex": "^penny_dialog$",
+      "class-name": "TreeSitterPennyDialog"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "Unlicense",
+    "description": "Injected sub-grammar for Penny strings",
+    "authors": [
+      {
+        "name": "Sebastian Weaver",
+        "email": "snotbane@pm.me",
+        "url": ""
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/snotbane/tree-sitter-penny-dialog.git",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
