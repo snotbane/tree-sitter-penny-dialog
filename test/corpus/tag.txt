@@ -6,3 +6,105 @@ tag.txt :: Empty, unbound tag
 (text
 	(tag)
 )
+
+
+==================
+tag.txt :: Incomplete tag
+==================
+<
+---
+(text
+	(ERROR)
+)
+
+
+==================
+tag.txt :: Single-char unbound tag
+==================
+<b>
+---
+(text
+	(tag
+		(tag_group
+			(tag_id)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Multi-char unbound tag
+==================
+<wave>
+---
+(text
+	(tag
+		(tag_group
+			(tag_id)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Tag with param/arg (unbound)
+==================
+<wave osc=8>
+---
+(text
+	(tag
+		(tag_group
+			(tag_id)
+			(tag_param)
+			(tag_arg)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Tag with spaces between param/arg
+==================
+<wave osc = 8>
+---
+(text
+	(tag
+		(tag_group
+			(tag_id)
+			(tag_param)
+			(tag_arg)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Tag with direct arg
+==================
+<wave =8>
+---
+(text
+	(tag
+		(tag_group
+			(tag_id)
+			(tag_arg)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Tag with multiple ids
+==================
+<wave|b>
+---
+(text
+	(tag
+		(tag_group
+			(tag_id)
+		)
+		(tag_group
+			(tag_id)
+		)
+	)
+)

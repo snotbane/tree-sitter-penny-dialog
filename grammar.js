@@ -21,8 +21,8 @@ export default grammar({
 					$.pure,
 					$.translation,
 					$.path,
-					$.express,
 					$.tag,
+					$.express,
 					$.escape,
 				),
 			),
@@ -60,12 +60,30 @@ export default grammar({
 			),
 		_path_declaration: ($) => alias("@", $.special),
 
-		express: ($) => seq("[", $.express_content, "]"),
+		tag: ($) =>
+			seq(
+				"<",
+				optional(seq($.tag_group, repeat(seq("|", $.tag_group)))),
+				">",
+			),
+		tag_group: ($) =>
+			seq(
+				$.tag_id,
+				optional(
+					choice(
+						seq(/\s+/, $.tag_param, /\s*=\s*/, $.tag_arg),
+						seq(/\s*=\s*/, $.tag_arg),
+					),
+				),
+			),
 
-		tag: ($) => seq("<", optional($.tag_content), ">"),
-		tag_content: ($) => /[^>]+/,
+		tag_id: ($) => /[a-z_][a-z_0-9]*/i,
+		tag_param: ($) => /[a-z_][a-z_0-9]*/i,
+		tag_arg: ($) => /[^>]+/,
 
 		escape: ($) => prec(10, /\\\S/),
+
+		express: ($) => seq("[", $.express_content, "]"),
 
 		// _identifier: ($) => /[a-z_][a-z_0-9]*/i,
 	},

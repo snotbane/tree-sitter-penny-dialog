@@ -74,15 +74,48 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "tag_content",
+          "type": "tag_group",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "tag_group",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_arg",
+          "named": true
+        },
+        {
+          "type": "tag_id",
+          "named": true
+        },
+        {
+          "type": "tag_param",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag_id",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "tag_param",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "text",
@@ -169,7 +202,7 @@
     "named": true
   },
   {
-    "type": "tag_content",
+    "type": "tag_arg",
     "named": true
   },
   {
@@ -178,6 +211,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

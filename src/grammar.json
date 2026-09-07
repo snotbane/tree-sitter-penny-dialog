@@ -21,11 +21,11 @@
           },
           {
             "type": "SYMBOL",
-            "name": "express"
+            "name": "tag"
           },
           {
             "type": "SYMBOL",
-            "name": "tag"
+            "name": "express"
           },
           {
             "type": "SYMBOL",
@@ -173,6 +173,130 @@
       "named": true,
       "value": "special"
     },
+    "tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "tag_group"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "|"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "tag_group"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
+    },
+    "tag_group": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "tag_id"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "\\s+"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "tag_param"
+                    },
+                    {
+                      "type": "PATTERN",
+                      "value": "\\s*=\\s*"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "tag_arg"
+                    }
+                  ]
+                },
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "\\s*=\\s*"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "tag_arg"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "tag_id": {
+      "type": "PATTERN",
+      "value": "[a-z_][a-z_0-9]*",
+      "flags": "i"
+    },
+    "tag_param": {
+      "type": "PATTERN",
+      "value": "[a-z_][a-z_0-9]*",
+      "flags": "i"
+    },
+    "tag_arg": {
+      "type": "PATTERN",
+      "value": "[^>]+"
+    },
+    "escape": {
+      "type": "PREC",
+      "value": 10,
+      "content": {
+        "type": "PATTERN",
+        "value": "\\\\\\S"
+      }
+    },
     "express": {
       "type": "SEQ",
       "members": [
@@ -189,43 +313,6 @@
           "value": "]"
         }
       ]
-    },
-    "tag": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "<"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "tag_content"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": ">"
-        }
-      ]
-    },
-    "tag_content": {
-      "type": "PATTERN",
-      "value": "[^>]+"
-    },
-    "escape": {
-      "type": "PREC",
-      "value": 10,
-      "content": {
-        "type": "PATTERN",
-        "value": "\\\\\\S"
-      }
     }
   },
   "extras": [],
