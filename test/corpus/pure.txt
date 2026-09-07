@@ -1,0 +1,52 @@
+==================
+Empty text
+==================
+---
+(text)
+
+
+==================
+Single character, single word
+==================
+A
+---
+(text
+	(pure))
+
+
+==================
+Multiple characters, single word
+==================
+Apple
+---
+(text
+	(pure))
+
+
+==================
+Multiple words
+==================
+Apple Banana Cucumber
+---
+(text
+	(pure))
+
+
+==================
+Multiple lines
+==================
+Apple Banana Cucumber
+Durian Eggplant Fig
+Guava Hemp Indigo
+---
+(text
+	(pure))
+
+
+==================
+Quotations
+==================
+"Not I", said the fox.
+---
+(text
+	(pure))

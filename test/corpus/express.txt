@@ -1,0 +1,66 @@
+==================
+express.txt :: Empty express
+==================
+Hello, []!
+---
+(text
+	(pure)
+	(express
+		(express_content)
+	)
+	(pure)
+)
+
+
+==================
+express.txt :: Express with path
+==================
+Good morning [ esther ], how are you?
+---
+(text
+	(pure)
+	(express
+		(express_content)
+	)
+	(pure)
+)
+
+
+==================
+express.txt :: Express with subarray
+==================
+Good morning [ esther[0] ], how are you?
+---
+(text
+	(pure)
+	(express
+		(express_content)
+	)
+	(pure)
+)
+
+==================
+express.txt :: Unfinished express
+==================
+Good morning [ esther
+---
+(text
+	(pure)
+	(express
+		(express_content)
+		(MISSING "]")
+	)
+)
+
+==================
+express.txt :: Unfinished express with subarray
+==================
+Good morning [ esther[0]
+---
+(text
+	(pure)
+	(express
+		(express_content)
+		(MISSING "]")
+	)
+)

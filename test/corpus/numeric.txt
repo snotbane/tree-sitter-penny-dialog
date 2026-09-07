@@ -1,0 +1,157 @@
+==================
+Single char integer (0)
+==================
+0
+---
+(text
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+==================
+Multi char integer (987)
+==================
+987
+---
+(text
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+
+==================
+Complete float (1.0)
+==================
+1.0
+---
+(text
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+
+==================
+Half float (.5)
+==================
+.5
+---
+(text
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+==================
+Time with two denominations (3:00)
+==================
+3:00
+---
+(text
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+
+==================
+Time with three denominations (123:00:00)
+==================
+123:00:00
+---
+(text
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+
+==================
+Time with decimal (03:00.456)
+==================
+03:00.456
+---
+(text
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+
+==================
+Number at end of text
+==================
+We're supposed to have 3
+---
+(text
+	(pure)
+	(pure
+		(informal
+			(number)
+		)
+	)
+)
+
+
+==================
+Number at end of sentence
+==================
+We're supposed to have 3.
+---
+(text
+	(pure)
+	(pure
+		(informal
+			(number)
+		)
+	)
+	(pure)
+)
+
+
+==================
+Time at end of sentence
+==================
+We're supposed to go at 3:00.
+---
+(text
+	(pure)
+	(pure
+		(informal
+			(number)
+		)
+	)
+	(pure)
+)
+
+
+==================
+Number at end of colon subsentence
+==================
+The Furious 5: A Study
+---
+(text
+	(pure)
+	(pure
+		(informal
+			(number)
+		)
+	)
+	(pure)
+)

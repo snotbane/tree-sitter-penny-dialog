@@ -1,0 +1,26 @@
+==================
+Single escaped character (tab)
+==================
+\t
+---
+(text
+	(escape))
+
+==================
+Single escaped character (backslash)
+==================
+\\
+---
+(text
+	(escape))
+
+==================
+Text with escape in the middle (\\)
+==================
+It's time \\ to go
+---
+(text
+	(pure)
+	(escape)
+	(pure)
+)

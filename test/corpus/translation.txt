@@ -1,0 +1,119 @@
+==================
+Standalone translation
+==================
+{en}
+---
+(text
+	(translation
+		(translation_content)
+	)
+)
+
+
+==================
+Standalone translation-locale
+==================
+{en-US}
+---
+(text
+	(translation
+		(translation_content)
+	)
+)
+
+
+==================
+Default then translation then text
+==================
+Hola {en} Hello
+---
+(text
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+)
+
+
+
+==================
+Default then two translations
+==================
+Hola {en} Hello {de} Bonjour
+---
+(text
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+)
+
+
+==================
+Non-latin text
+==================
+{ja} こんにちは {zh} 你好 {ar} مرحبًا
+---
+(text
+	(translation
+		(translation_content)
+	)
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+)
+
+
+==================
+Multi-line translations
+==================
+Hello
+{es} Hola
+{ja} こんにちは
+{zh} 你好
+{ar} مرحبًا
+---
+(text
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+	(translation
+		(translation_content)
+	)
+	(pure)
+)
+
+
+==================
+Invalid translation
+==================
+{ p1ckl3s } Cucumbers
+---
+(text
+	(translation
+		(translation_content_invalid)
+	)
+	(pure)
+)

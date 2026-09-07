@@ -1,0 +1,33 @@
+==================
+Single-identifier path
+==================
+@rubin
+---
+(text
+	(path
+		(special)
+	)
+)
+
+==================
+Single-identifier path relative
+==================
+@.name
+---
+(text
+	(path
+		(special)
+	)
+)
+
+
+==================
+Multi-identifier path
+==================
+@rubin.name.color
+---
+(text
+	(path
+		(special)
+	)
+)

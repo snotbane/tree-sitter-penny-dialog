@@ -1,0 +1,46 @@
+==================
+informal.txt :: Single informal character (/)
+==================
+/
+---
+(text
+	(pure
+		(informal)
+	)
+)
+
+
+==================
+informal.txt :: Multiple informals
+==================
++=
+---
+(text
+	(pure
+		(informal)
+	)
+	(pure
+		(informal
+		)
+	)
+)
+
+
+
+==================
+informal.txt :: Text with informal in the middle
+==================
+I thought about getting $5.00 from him.
+---
+(text
+	(pure)
+	(pure
+		(informal)
+	)
+	(pure
+		(informal
+			(number)
+		)
+	)
+	(pure)
+)
