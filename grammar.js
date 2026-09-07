@@ -8,10 +8,65 @@
 // @ts-check
 
 export default grammar({
-  name: "penny_dialog",
+	name: "penny_dialog",
 
-  rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => "hello"
-  }
+	externals: ($) => [$.express_content],
+
+	extras: ($) => [],
+
+	rules: {
+		text: ($) =>
+			repeat(
+				choice(
+					$.pure,
+					$.translation,
+					$.path,
+					$.express,
+					$.tag,
+					$.escape,
+				),
+			),
+
+		// Pure text is displayed directly to the user without any alteration.
+		pure: ($) =>
+			// prec(-10, choice(token(repeat1($._pure_formal)), $.informal)),
+			prec(-1, choice($._pure_formal, $.informal)),
+
+		// Formal (truly pure) pure text is any sequence of linguistic characters. This is highlighted as a regular string.
+		_pure_formal: ($) => token(repeat1(/[^\\\d\/@#$%^&*+=_`|<>{}\[\]]/)),
+
+		// Any character that is recognized as "informal text," and does not fit into any other category. It is not illegal, but unusual to find in traditional literature.
+		informal: ($) => prec(-10, choice($.number, $._informal_misc)),
+
+		_informal_misc: ($) => /[\/@#$%^&*+=_`|\\<>{}\[\]]/,
+
+		number: ($) => choice(/\d+/, /\d+\.\d+/, /[\.]\d+/, /\d+([:\.]\d+)+/),
+
+		translation: ($) =>
+			seq(
+				"{",
+				/\s*/,
+				choice($.translation_content, $.translation_content_invalid),
+				/\s*/,
+				"}",
+			),
+		translation_content: ($) => prec(2, /[a-z\-]+/i),
+		translation_content_invalid: ($) => /[^\}]+/,
+
+		path: ($) =>
+			seq(
+				$._path_declaration,
+				/\.?[a-z_][a-z_0-9]*(\.[a-z_][a-z_0-9]*)*/i,
+			),
+		_path_declaration: ($) => alias("@", $.special),
+
+		express: ($) => seq("[", $.express_content, "]"),
+
+		tag: ($) => seq("<", optional($.tag_content), ">"),
+		tag_content: ($) => /[^>]+/,
+
+		escape: ($) => prec(10, /\\\S/),
+
+		// _identifier: ($) => /[a-z_][a-z_0-9]*/i,
+	},
 });
