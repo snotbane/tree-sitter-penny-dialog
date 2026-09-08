@@ -20,6 +20,39 @@
     }
   },
   {
+    "type": "fx",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "fx_arg",
+          "named": true
+        },
+        {
+          "type": "fx_id",
+          "named": true
+        },
+        {
+          "type": "fx_param",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fx_id",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "fx_param",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "informal",
     "named": true,
     "fields": {},
@@ -70,7 +103,7 @@
     }
   },
   {
-    "type": "tag",
+    "type": "tag_end",
     "named": true,
     "fields": {},
     "children": {
@@ -78,44 +111,34 @@
       "required": false,
       "types": [
         {
-          "type": "tag_group",
+          "type": "fx_id",
+          "named": true
+        },
+        {
+          "type": "fx_sep",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "tag_group",
+    "type": "tag_start",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "tag_arg",
+          "type": "fx",
           "named": true
         },
         {
-          "type": "tag_id",
-          "named": true
-        },
-        {
-          "type": "tag_param",
+          "type": "fx_sep",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "tag_id",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "tag_param",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "text",
@@ -143,7 +166,11 @@
           "named": true
         },
         {
-          "type": "tag",
+          "type": "tag_end",
+          "named": true
+        },
+        {
+          "type": "tag_start",
           "named": true
         },
         {
@@ -182,6 +209,10 @@
     "named": false
   },
   {
+    "type": "</",
+    "named": false
+  },
+  {
     "type": ">",
     "named": false
   },
@@ -198,11 +229,15 @@
     "named": true
   },
   {
-    "type": "special",
+    "type": "fx_arg",
     "named": true
   },
   {
-    "type": "tag_arg",
+    "type": "fx_sep",
+    "named": true
+  },
+  {
+    "type": "special",
     "named": true
   },
   {
@@ -211,10 +246,6 @@
   },
   {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "|",
     "named": false
   },
   {

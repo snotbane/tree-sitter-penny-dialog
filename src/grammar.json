@@ -21,7 +21,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "tag"
+            "name": "_tag"
           },
           {
             "type": "SYMBOL",
@@ -173,7 +173,20 @@
       "named": true,
       "value": "special"
     },
-    "tag": {
+    "_tag": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "tag_start"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tag_end"
+        }
+      ]
+    },
+    "tag_start": {
       "type": "SEQ",
       "members": [
         {
@@ -188,7 +201,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "tag_group"
+                  "name": "fx"
                 },
                 {
                   "type": "REPEAT",
@@ -196,12 +209,12 @@
                     "type": "SEQ",
                     "members": [
                       {
-                        "type": "STRING",
-                        "value": "|"
+                        "type": "SYMBOL",
+                        "name": "fx_sep"
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "tag_group"
+                        "name": "fx"
                       }
                     ]
                   }
@@ -219,12 +232,58 @@
         }
       ]
     },
-    "tag_group": {
+    "tag_end": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "</"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "fx_id"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "fx_sep"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "fx_id"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
+    },
+    "fx": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "tag_id"
+          "name": "fx_id"
         },
         {
           "type": "CHOICE",
@@ -241,7 +300,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "tag_param"
+                      "name": "fx_param"
                     },
                     {
                       "type": "PATTERN",
@@ -249,7 +308,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "tag_arg"
+                      "name": "fx_arg"
                     }
                   ]
                 },
@@ -262,7 +321,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "tag_arg"
+                      "name": "fx_arg"
                     }
                   ]
                 }
@@ -275,19 +334,23 @@
         }
       ]
     },
-    "tag_id": {
+    "fx_id": {
       "type": "PATTERN",
       "value": "[a-z_][a-z_0-9]*",
       "flags": "i"
     },
-    "tag_param": {
+    "fx_param": {
       "type": "PATTERN",
       "value": "[a-z_][a-z_0-9]*",
       "flags": "i"
     },
-    "tag_arg": {
+    "fx_sep": {
+      "type": "STRING",
+      "value": "|"
+    },
+    "fx_arg": {
       "type": "PATTERN",
-      "value": "[^>]+"
+      "value": "[^\\s|>]+"
     },
     "escape": {
       "type": "PREC",

@@ -21,7 +21,7 @@ export default grammar({
 					$.pure,
 					$.translation,
 					$.path,
-					$.tag,
+					$._tag,
 					$.express,
 					$.escape,
 				),
@@ -60,26 +60,31 @@ export default grammar({
 			),
 		_path_declaration: ($) => alias("@", $.special),
 
-		tag: ($) =>
+		_tag: ($) => choice($.tag_start, $.tag_end),
+		tag_start: ($) =>
+			seq("<", optional(seq($.fx, repeat(seq($.fx_sep, $.fx)))), ">"),
+
+		tag_end: ($) =>
 			seq(
-				"<",
-				optional(seq($.tag_group, repeat(seq("|", $.tag_group)))),
+				"</",
+				optional(seq($.fx_id, repeat(seq($.fx_sep, $.fx_id)))),
 				">",
 			),
-		tag_group: ($) =>
+		fx: ($) =>
 			seq(
-				$.tag_id,
+				$.fx_id,
 				optional(
 					choice(
-						seq(/\s+/, $.tag_param, /\s*=\s*/, $.tag_arg),
-						seq(/\s*=\s*/, $.tag_arg),
+						seq(/\s+/, $.fx_param, /\s*=\s*/, $.fx_arg),
+						seq(/\s*=\s*/, $.fx_arg),
 					),
 				),
 			),
 
-		tag_id: ($) => /[a-z_][a-z_0-9]*/i,
-		tag_param: ($) => /[a-z_][a-z_0-9]*/i,
-		tag_arg: ($) => /[^>]+/,
+		fx_id: ($) => /[a-z_][a-z_0-9]*/i,
+		fx_param: ($) => /[a-z_][a-z_0-9]*/i,
+		fx_sep: ($) => "|",
+		fx_arg: ($) => /[^\s|>]+/,
 
 		escape: ($) => prec(10, /\\\S/),
 

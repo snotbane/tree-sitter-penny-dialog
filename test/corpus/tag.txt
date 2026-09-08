@@ -1,15 +1,25 @@
 ==================
-tag.txt :: Empty, unbound tag
+tag.txt :: Empty start tag
 ==================
 <>
 ---
 (text
-	(tag)
+	(tag_start)
 )
 
 
 ==================
-tag.txt :: Incomplete tag
+tag.txt :: Empty end tag
+==================
+</>
+---
+(text
+	(tag_end)
+)
+
+
+==================
+tag.txt :: Incomplete start tag
 ==================
 <
 ---
@@ -19,92 +29,124 @@ tag.txt :: Incomplete tag
 
 
 ==================
-tag.txt :: Single-char unbound tag
+tag.txt :: Incomplete end tag
+==================
+</
+---
+(text
+	(ERROR)
+)
+
+
+==================
+tag.txt :: Start tag, single char
 ==================
 <b>
 ---
 (text
-	(tag
-		(tag_group
-			(tag_id)
+	(tag_start
+		(fx
+			(fx_id)
 		)
 	)
 )
 
 
 ==================
-tag.txt :: Multi-char unbound tag
+tag.txt :: Start tag, multiple chars
 ==================
 <wave>
 ---
 (text
-	(tag
-		(tag_group
-			(tag_id)
+	(tag_start
+		(fx
+			(fx_id)
 		)
 	)
 )
 
 
+
 ==================
-tag.txt :: Tag with param/arg (unbound)
+tag.txt :: Start tag with param/arg (unbound)
 ==================
 <wave osc=8>
 ---
 (text
-	(tag
-		(tag_group
-			(tag_id)
-			(tag_param)
-			(tag_arg)
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_param)
+			(fx_arg)
 		)
 	)
 )
 
 
 ==================
-tag.txt :: Tag with spaces between param/arg
+tag.txt :: Start tag with spaces between param/arg
 ==================
 <wave osc = 8>
 ---
 (text
-	(tag
-		(tag_group
-			(tag_id)
-			(tag_param)
-			(tag_arg)
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_param)
+			(fx_arg)
 		)
 	)
 )
 
 
 ==================
-tag.txt :: Tag with direct arg
+tag.txt :: Start tag with direct arg
 ==================
 <wave =8>
 ---
 (text
-	(tag
-		(tag_group
-			(tag_id)
-			(tag_arg)
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_arg)
 		)
 	)
 )
 
 
 ==================
-tag.txt :: Tag with multiple ids
+tag.txt :: Start tag with multiple ids
 ==================
 <wave|b>
 ---
 (text
-	(tag
-		(tag_group
-			(tag_id)
+	(tag_start
+		(fx
+			(fx_id)
 		)
-		(tag_group
-			(tag_id)
+		(fx_sep)
+		(fx
+			(fx_id)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Start tag with args and additional tag
+==================
+<wave spin=8|i>
+---
+(text
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_param)
+			(fx_arg)
+		)
+		(fx_sep)
+		(fx
+			(fx_id)
 		)
 	)
 )
