@@ -583,6 +583,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 28:
       ACCEPT_TOKEN(aux_sym_fx_token1);
       if (lookahead == '=') ADVANCE(29);
+      if (lookahead == '|') ADVANCE(31);
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') ADVANCE(28);
       END_STATE();
@@ -600,6 +601,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 31:
       ACCEPT_TOKEN(sym_fx_sep);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(31);
       END_STATE();
     case 32:
       ACCEPT_TOKEN(sym_fx_arg);

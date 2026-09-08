@@ -83,7 +83,7 @@ export default grammar({
 
 		fx_id: ($) => /[a-z_][a-z_0-9]*/i,
 		fx_param: ($) => /[a-z_][a-z_0-9]*/i,
-		fx_sep: ($) => "|",
+		fx_sep: ($) => /\s*\|\s*/,
 		fx_arg: ($) => /[^\s|>]+/,
 
 		escape: ($) => prec(10, /\\\S/),

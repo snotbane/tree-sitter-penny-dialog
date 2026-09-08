@@ -345,8 +345,8 @@
       "flags": "i"
     },
     "fx_sep": {
-      "type": "STRING",
-      "value": "|"
+      "type": "PATTERN",
+      "value": "\\s*\\|\\s*"
     },
     "fx_arg": {
       "type": "PATTERN",

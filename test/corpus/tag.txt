@@ -150,3 +150,23 @@ tag.txt :: Start tag with args and additional tag
 		)
 	)
 )
+
+
+==================
+tag.txt :: Start tag with args and additional tag (spaced)
+==================
+<wave spin=8 | i>
+---
+(text
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_param)
+			(fx_arg)
+		)
+		(fx_sep)
+		(fx
+			(fx_id)
+		)
+	)
+)
