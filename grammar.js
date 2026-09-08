@@ -84,12 +84,14 @@ export default grammar({
 		fx_id: ($) => /[a-z_][a-z_0-9]*/i,
 		fx_param: ($) => /[a-z_][a-z_0-9]*/i,
 		fx_sep: ($) => /\s*\|\s*/,
-		fx_arg: ($) => /[^\s|>]+/,
+		fx_arg: ($) => choice(prec(2, $._quoted_string), /[^|>]/),
 
 		escape: ($) => prec(10, /\\\S/),
 
 		express: ($) => seq("[", $.express_content, "]"),
 
 		// _identifier: ($) => /[a-z_][a-z_0-9]*/i,
+		_quoted_string: ($) =>
+			choice(prec(9, /['"`]{3}.*?['"`]{3}/), /['"`].*?['"`]/),
 	},
 });

@@ -349,8 +349,21 @@
       "value": "\\s*\\|\\s*"
     },
     "fx_arg": {
-      "type": "PATTERN",
-      "value": "[^\\s|>]+"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PREC",
+          "value": 2,
+          "content": {
+            "type": "SYMBOL",
+            "name": "_quoted_string"
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^|>]"
+        }
+      ]
     },
     "escape": {
       "type": "PREC",
@@ -374,6 +387,23 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "_quoted_string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PREC",
+          "value": 9,
+          "content": {
+            "type": "PATTERN",
+            "value": "['\"`]{3}.*?['\"`]{3}"
+          }
+        },
+        {
+          "type": "PATTERN",
+          "value": "['\"`].*?['\"`]"
         }
       ]
     }

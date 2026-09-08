@@ -43,6 +43,11 @@
     }
   },
   {
+    "type": "fx_arg",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "fx_id",
     "named": true,
     "fields": {}
@@ -226,10 +231,6 @@
   },
   {
     "type": "express_content",
-    "named": true
-  },
-  {
-    "type": "fx_arg",
     "named": true
   },
   {

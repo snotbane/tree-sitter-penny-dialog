@@ -170,3 +170,56 @@ tag.txt :: Start tag with args and additional tag (spaced)
 		)
 	)
 )
+
+
+==================
+tag.txt :: Start tag with string arg
+==================
+<va="Rubin Redding">
+---
+(text
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_arg)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Start tag with string arg then bold
+==================
+<va="Rubin Redding" | b>
+---
+(text
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_arg)
+		)
+		(fx_sep)
+		(fx
+			(fx_id)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Start tag with string arg containing escaped separator
+==================
+<va="Rubin | Redding" | b>
+---
+(text
+	(tag_start
+		(fx
+			(fx_id)
+			(fx_arg)
+		)
+		(fx_sep)
+		(fx
+			(fx_id)
+		)
+	)
+)
