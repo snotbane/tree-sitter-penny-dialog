@@ -171,6 +171,10 @@
           "named": true
         },
         {
+          "type": "quote",
+          "named": true
+        },
+        {
           "type": "tag_end",
           "named": true
         },
@@ -235,6 +239,10 @@
   },
   {
     "type": "fx_sep",
+    "named": true
+  },
+  {
+    "type": "quote",
     "named": true
   },
   {

@@ -16,7 +16,32 @@ export default grammar({
 
 	rules: {
 		text: ($) =>
-			repeat(
+			choice(
+				prec(
+					4,
+					seq(
+						alias("```", $.quote),
+						optional($._quote_contents),
+						alias("```", $.quote),
+					),
+				),
+				prec(
+					3,
+					seq(
+						alias("`", $.quote),
+						optional($._quote_contents),
+						alias("`", $.quote),
+					),
+				),
+				prec(
+					2,
+					seq(alias(/[>+]/, $.quote), optional($._quote_contents)),
+				),
+				optional($._quote_contents),
+			),
+
+		_quote_contents: ($) =>
+			repeat1(
 				choice(
 					$.pure,
 					$.translation,
