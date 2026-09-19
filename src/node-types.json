@@ -100,7 +100,17 @@
   {
     "type": "path",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "path_content",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "pure",
@@ -256,6 +266,10 @@
   },
   {
     "type": "lang_invalid",
+    "named": true
+  },
+  {
+    "type": "path_content",
     "named": true
   },
   {

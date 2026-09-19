@@ -4,7 +4,9 @@ path.txt :: Single-identifier path
 @rubin
 ---
 (text
-	(path)
+	(path
+		(path_content)
+	)
 )
 
 ==================
@@ -13,7 +15,9 @@ path.txt :: Single-identifier path relative
 @.name
 ---
 (text
-	(path)
+	(path
+		(path_content)
+	)
 )
 
 
@@ -23,7 +27,9 @@ path.txt :: Multi-identifier path
 @rubin.name.color
 ---
 (text
-	(path)
+	(path
+		(path_content)
+	)
 )
 
 
@@ -34,5 +40,7 @@ path.txt :: Multi-identifier path (relative)
 @.name.color
 ---
 (text
-	(path)
+	(path
+		(path_content)
+	)
 )

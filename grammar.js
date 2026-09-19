@@ -53,7 +53,14 @@ export default grammar({
 
 		expression: ($) => seq("{", $.expression_content, "}"),
 
-		path: ($) => seq("@", /\.?[a-z_][a-z_0-9]*(\.[a-z_][a-z_0-9]*)*/i),
+		path: ($) =>
+			seq(
+				"@",
+				alias(
+					/\.?[a-z_][a-z_0-9]*(\.[a-z_][a-z_0-9]*)*/i,
+					$.path_content,
+				),
+			),
 
 		identifier: ($) => /[a-z_][a-z_0-9]*/i,
 

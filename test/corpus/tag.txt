@@ -292,11 +292,15 @@ tag.txt :: Tag containing path
 			(arg
 				(identifier)
 				(arg_value
-					(path)
+					(path
+						(path_content)
+					)
 				)
 			)
 		)
 	)
-	(path)
+	(path
+		(path_content)
+	)
 	(tag_end)
 )

@@ -85,7 +85,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_LBRACE] = "{",
   [anon_sym_RBRACE] = "}",
   [anon_sym_AT] = "@",
-  [aux_sym_path_token1] = "path_token1",
+  [aux_sym_path_token1] = "path_content",
   [sym_identifier] = "identifier",
   [anon_sym_LBRACK] = "[",
   [anon_sym_RBRACK] = "]",
@@ -231,8 +231,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [aux_sym_path_token1] = {
-    .visible = false,
-    .named = false,
+    .visible = true,
+    .named = true,
   },
   [sym_identifier] = {
     .visible = true,
