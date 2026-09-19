@@ -4,21 +4,7 @@ bound.txt :: single backtick quote
 `Hello`
 ---
 (text
-	(quote)
 	(pure)
-	(quote)
-)
-
-
-==================
-bound.txt :: triple backtick quote
-==================
-```Hello```
----
-(text
-	(quote)
-	(pure)
-	(quote)
 )
 
 
@@ -28,18 +14,6 @@ bound.txt :: Angle block
 > Hello
 ---
 (text
-	(quote)
-	(pure)
-)
-
-
-==================
-bound.txt :: Plus block
-==================
-+ Hello
----
-(text
-	(quote)
 	(pure)
 )
 
@@ -50,7 +24,6 @@ bound.txt :: Angle block with angle informal
 > Hello > what's your name?
 ---
 (text
-	(quote)
 	(pure)
 	(pure
 		(informal)

@@ -1,33 +1,38 @@
 ==================
-Single-identifier path
+path.txt :: Single-identifier path
 ==================
 @rubin
 ---
 (text
-	(path
-		(special)
-	)
+	(path)
 )
 
 ==================
-Single-identifier path relative
+path.txt :: Single-identifier path relative
 ==================
 @.name
 ---
 (text
-	(path
-		(special)
-	)
+	(path)
 )
 
 
 ==================
-Multi-identifier path
+path.txt :: Multi-identifier path
 ==================
 @rubin.name.color
 ---
 (text
-	(path
-		(special)
-	)
+	(path)
+)
+
+
+
+==================
+path.txt :: Multi-identifier path (relative)
+==================
+@.name.color
+---
+(text
+	(path)
 )

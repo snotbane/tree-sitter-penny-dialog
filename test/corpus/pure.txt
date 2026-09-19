@@ -1,12 +1,12 @@
 ==================
-Empty text
+pure.txt :: Empty text
 ==================
 ---
 (text)
 
 
 ==================
-Single character, single word
+pure.txt :: Single character, single word
 ==================
 A
 ---
@@ -15,7 +15,7 @@ A
 
 
 ==================
-Multiple characters, single word
+pure.txt :: Multiple characters, single word
 ==================
 Apple
 ---
@@ -24,7 +24,7 @@ Apple
 
 
 ==================
-Multiple words
+pure.txt :: Multiple words
 ==================
 Apple Banana Cucumber
 ---
@@ -33,7 +33,7 @@ Apple Banana Cucumber
 
 
 ==================
-Multiple lines
+pure.txt :: Multiple lines
 ==================
 Apple Banana Cucumber
 Durian Eggplant Fig
@@ -44,7 +44,7 @@ Guava Hemp Indigo
 
 
 ==================
-Quotations
+pure.txt :: Quotations
 ==================
 "Not I", said the fox.
 ---

@@ -1,21 +1,21 @@
 #include "tree_sitter/parser.h"
 
 enum TokenType {
-  EXPRESS_CONTENT,
+  EXPRESSION_CONTENT,
 };
 
 bool tree_sitter_penny_dialog_external_scanner_scan(void *payload,
                                                     TSLexer *lexer,
                                                     const bool *valid_symbols) {
   // Only produce this token when the parser expects it.
-  if (!valid_symbols[EXPRESS_CONTENT]) {
+  if (!valid_symbols[EXPRESSION_CONTENT]) {
     return false;
   }
 
   int bracket_depth = 1;
   bool escaped = false;
 
-  lexer->result_symbol = EXPRESS_CONTENT;
+  lexer->result_symbol = EXPRESSION_CONTENT;
 
   for (;;) {
     // PEEK at the next character – do NOT consume it yet.
@@ -24,8 +24,8 @@ bool tree_sitter_penny_dialog_external_scanner_scan(void *payload,
     // If reached end of file, go ahead and return true - express will be
     // unbound in ruleset.
     // If this is the outer closing bracket, stop right before it.
-    if (c == 0 || c == ']' && bracket_depth == 1) {
-      // Mark the end of the token at the current position (before ']').
+    if (c == 0 || c == '}' && bracket_depth == 1) {
+      // Mark the end of the token at the current position (before '}).
       lexer->mark_end(lexer);
       return true;
     }
@@ -44,10 +44,10 @@ bool tree_sitter_penny_dialog_external_scanner_scan(void *payload,
       continue;
     }
 
-    if (c == '[') {
+    if (c == '{') {
       bracket_depth++;
-    } else if (c == ']') {
-      // This must be an inner ']' (since bracket_depth > 1 here).
+    } else if (c == '}') {
+      // This must be an inner '} (since bracket_depth > 1 here).
       bracket_depth--;
     }
   }

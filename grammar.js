@@ -10,113 +10,85 @@
 export default grammar({
 	name: "penny_dialog",
 
-	externals: ($) => [$.express_content],
+	externals: ($) => [$.expression_content],
 
-	extras: ($) => [],
+	// extras: ($) => [],
 
 	rules: {
 		text: ($) =>
-			choice(
-				prec(
-					4,
-					seq(
-						alias("```", $.quote),
-						optional($._quote_contents),
-						alias("```", $.quote),
-					),
+			optional(
+				choice(
+					seq("`", optional($._contents), "`"),
+					seq(">", optional($._contents)),
+					prec(-1, $._contents),
 				),
-				prec(
-					3,
-					seq(
-						alias("`", $.quote),
-						optional($._quote_contents),
-						alias("`", $.quote),
-					),
-				),
-				prec(
-					2,
-					seq(alias(/[>+]/, $.quote), optional($._quote_contents)),
-				),
-				optional($._quote_contents),
 			),
 
-		_quote_contents: ($) =>
+		_contents: ($) =>
 			repeat1(
 				choice(
 					$.pure,
-					$.translation,
+					$.translation_marker,
 					$.path,
 					$._tag,
-					$.express,
-					$.escape,
+					$.expression,
+					$.escape_sequence,
 				),
 			),
 
+		escape_sequence: ($) => prec(10, /\\\S/),
+
+		number: ($) => choice(/\d+/, /\d+\.\d+/, /[\.]\d+/, /\d+([:\.]\d+)+/),
+
 		// Pure text is displayed directly to the user without any alteration.
-		pure: ($) =>
-			// prec(-10, choice(token(repeat1($._pure_formal)), $.informal)),
-			prec(-1, choice($._pure_formal, $.informal)),
+		pure: ($) => prec(-1, choice($._formal, $.informal)),
 
 		// Formal (truly pure) pure text is any sequence of linguistic characters. This is highlighted as a regular string.
-		_pure_formal: ($) => token(repeat1(/[^\\\d\/@#$%^&*+=_`|<>{}\[\]]/)),
+		_formal: ($) => token(repeat1(/[^\\\d\/@#$%^&*+=_`|<>{}\[\]]/)),
 
 		// Any character that is recognized as "informal text," and does not fit into any other category. It is not illegal, but unusual to find in traditional literature.
 		informal: ($) => prec(-10, choice($.number, $._informal_misc)),
 
 		_informal_misc: ($) => /[\/@#$%^&*+=_`|\\<>{}\[\]]/,
 
-		number: ($) => choice(/\d+/, /\d+\.\d+/, /[\.]\d+/, /\d+([:\.]\d+)+/),
+		expression: ($) => seq("{", $.expression_content, "}"),
 
-		translation: ($) =>
-			seq(
-				"{",
-				/\s*/,
-				choice($.translation_content, $.translation_content_invalid),
-				/\s*/,
-				"}",
-			),
-		translation_content: ($) => prec(2, /[a-z\-]+/i),
-		translation_content_invalid: ($) => /[^\}]+/,
+		path: ($) => seq("@", /\.?[a-z_][a-z_0-9]*(\.[a-z_][a-z_0-9]*)*/i),
 
-		path: ($) =>
-			seq(
-				$._path_declaration,
-				/\.?[a-z_][a-z_0-9]*(\.[a-z_][a-z_0-9]*)*/i,
-			),
-		_path_declaration: ($) => alias("@", $.special),
+		identifier: ($) => /[a-z_][a-z_0-9]*/i,
+
+		translation_marker: ($) =>
+			seq("[", choice($.lang, $.lang_invalid), "]"),
+		lang: ($) => prec(2, /[a-z\-]+/i),
+		lang_invalid: ($) => /[^\]]+/,
 
 		_tag: ($) => choice($.tag_start, $.tag_end),
 		tag_start: ($) =>
-			seq("<", optional(seq($.fx, repeat(seq($.fx_sep, $.fx)))), ">"),
+			seq("<", optional(seq($.decor, repeat(seq("|", $.decor)))), ">"),
 
 		tag_end: ($) =>
 			seq(
 				"</",
-				optional(seq($.fx_id, repeat(seq($.fx_sep, $.fx_id)))),
+				optional(seq($.identifier, repeat(seq("|", $.identifier)))),
 				">",
 			),
-		fx: ($) =>
-			seq(
-				$.fx_id,
-				optional(
-					choice(
-						seq(/\s+/, $.fx_param, /\s*=\s*/, $.fx_arg),
-						seq(/\s*=\s*/, $.fx_arg),
-					),
+
+		decor: ($) => seq($.arg, repeat(seq($.arg))),
+
+		arg: ($) =>
+			prec.left(2, seq($.identifier, optional(seq("=", $.arg_value)))),
+
+		arg_value: ($) =>
+			choice(/[^@{}'"`|>\s]+/, $._quoted_string, $.expression, $.path),
+
+		_quoted_string: ($) =>
+			prec(
+				100,
+				choice(
+					seq("'", /[^']*/, "'"),
+					seq('"', /[^"]*/, '"'),
+					seq("`", /[^`]*/, "`"),
 				),
 			),
-
-		fx_id: ($) => /[a-z_][a-z_0-9]*/i,
-		fx_param: ($) => /[a-z_][a-z_0-9]*/i,
-		fx_sep: ($) => /\s*\|\s*/,
-		fx_arg: ($) => choice(prec(2, $._quoted_string), /[^|>]/),
-
-		escape: ($) => prec(10, /\\\S/),
-
-		express: ($) => seq("[", $.express_content, "]"),
-
-		// _identifier: ($) => /[a-z_][a-z_0-9]*/i,
-		_quoted_string: ($) =>
-			choice(prec(9, /['"`]{3}.*?['"`]{3}/), /['"`].*?['"`]/),
 	},
 });

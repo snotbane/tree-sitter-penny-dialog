@@ -1,26 +1,40 @@
 ==================
-Single escaped character (tab)
+escape.txt :: Single escaped character (tab)
 ==================
 \t
 ---
 (text
-	(escape))
+	(escape_sequence))
 
 ==================
-Single escaped character (backslash)
+escape.txt :: Single escaped character (backslash)
 ==================
 \\
 ---
 (text
-	(escape))
+	(escape_sequence))
 
 ==================
-Text with escape in the middle (\\)
+escape.txt :: Text with escape in the middle (\\)
 ==================
 It's time \\ to go
 ---
 (text
 	(pure)
-	(escape)
+	(escape_sequence)
+	(pure)
+)
+
+
+==================
+escape.txt :: Text with escaping quote
+==================
+`It's time \`to go\` now`
+---
+(text
+	(pure)
+	(escape_sequence)
+	(pure)
+	(escape_sequence)
 	(pure)
 )

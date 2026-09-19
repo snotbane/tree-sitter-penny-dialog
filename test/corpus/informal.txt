@@ -13,7 +13,7 @@ informal.txt :: Single informal character (/)
 ==================
 informal.txt :: Multiple informals
 ==================
-=+
++=
 ---
 (text
 	(pure

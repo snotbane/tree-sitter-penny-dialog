@@ -1,66 +1,66 @@
 ==================
-express.txt :: Empty express
+expression.txt :: Empty expression
 ==================
-Hello, []!
+Hello, {}!
 ---
 (text
 	(pure)
-	(express
-		(express_content)
+	(expression
+		(expression_content)
 	)
 	(pure)
 )
 
 
 ==================
-express.txt :: Express with path
+expression.txt :: expression with path
 ==================
-Good morning [ esther ], how are you?
+Good morning { esther }, how are you?
 ---
 (text
 	(pure)
-	(express
-		(express_content)
+	(expression
+		(expression_content)
 	)
 	(pure)
 )
 
 
 ==================
-express.txt :: Express with subarray
+expression.txt :: expression with subarray
 ==================
-Good morning [ esther[0] ], how are you?
+Good morning { esther[0] }, how are you?
 ---
 (text
 	(pure)
-	(express
-		(express_content)
+	(expression
+		(expression_content)
 	)
 	(pure)
 )
 
 ==================
-express.txt :: Unfinished express
+expression.txt :: Unfinished expression
 ==================
-Good morning [ esther
+Good morning { esther
 ---
 (text
 	(pure)
-	(express
-		(express_content)
-		(MISSING "]")
+	(expression
+		(expression_content)
+		(MISSING "}")
 	)
 )
 
 ==================
-express.txt :: Unfinished express with subarray
+expression.txt :: Unfinished expression with subarray
 ==================
-Good morning [ esther[0]
+Good morning { esther[0]
 ---
 (text
 	(pure)
-	(express
-		(express_content)
-		(MISSING "]")
+	(expression
+		(expression_content)
+		(MISSING "}")
 	)
 )

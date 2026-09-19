@@ -45,8 +45,10 @@ tag.txt :: Start tag, single char
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
 	)
 )
@@ -59,8 +61,10 @@ tag.txt :: Start tag, multiple chars
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
 	)
 )
@@ -74,10 +78,14 @@ tag.txt :: Start tag with param/arg (unbound)
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_param)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+			)
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
 	)
 )
@@ -90,10 +98,14 @@ tag.txt :: Start tag with spaces between param/arg
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_param)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+			)
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
 	)
 )
@@ -106,9 +118,11 @@ tag.txt :: Start tag with direct arg
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
 	)
 )
@@ -121,12 +135,15 @@ tag.txt :: Start tag with multiple ids
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
-		(fx_sep)
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
 	)
 )
@@ -139,14 +156,19 @@ tag.txt :: Start tag with args and additional tag
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_param)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+			)
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
-		(fx_sep)
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
 	)
 )
@@ -159,14 +181,19 @@ tag.txt :: Start tag with args and additional tag (spaced)
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_param)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+			)
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
-		(fx_sep)
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
 	)
 )
@@ -179,9 +206,11 @@ tag.txt :: Start tag with string arg
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
 	)
 )
@@ -194,13 +223,16 @@ tag.txt :: Start tag with string arg then bold
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
-		(fx_sep)
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
 	)
 )
@@ -213,13 +245,58 @@ tag.txt :: Start tag with string arg containing escaped separator
 ---
 (text
 	(tag_start
-		(fx
-			(fx_id)
-			(fx_arg)
+		(decor
+			(arg
+				(identifier)
+				(arg_value)
+			)
 		)
-		(fx_sep)
-		(fx
-			(fx_id)
+		(decor
+			(arg
+				(identifier)
+			)
 		)
 	)
+)
+
+
+==================
+tag.txt :: Start tag with expression
+==================
+<va={ > Rubin }>
+---
+(text
+	(tag_start
+		(decor
+			(arg
+				(identifier)
+				(arg_value
+					(expression
+						(expression_content)
+					)
+				)
+			)
+		)
+	)
+)
+
+
+==================
+tag.txt :: Tag containing path
+==================
+<color=@.color>@.name</>
+---
+(text
+	(tag_start
+		(decor
+			(arg
+				(identifier)
+				(arg_value
+					(path)
+				)
+			)
+		)
+	)
+	(path)
+	(tag_end)
 )

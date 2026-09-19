@@ -1,5 +1,5 @@
 ==================
-Single char integer (0)
+number.txt :: Single char integer (0)
 ==================
 0
 ---
@@ -12,7 +12,7 @@ Single char integer (0)
 )
 
 ==================
-Multi char integer (987)
+number.txt :: Multi char integer (987)
 ==================
 987
 ---
@@ -26,7 +26,7 @@ Multi char integer (987)
 
 
 ==================
-Complete float (1.0)
+number.txt :: Complete float (1.0)
 ==================
 1.0
 ---
@@ -40,7 +40,7 @@ Complete float (1.0)
 
 
 ==================
-Half float (.5)
+number.txt :: Half float (.5)
 ==================
 .5
 ---
@@ -53,7 +53,7 @@ Half float (.5)
 )
 
 ==================
-Time with two denominations (3:00)
+number.txt :: Time with two denominations (3:00)
 ==================
 3:00
 ---
@@ -67,7 +67,7 @@ Time with two denominations (3:00)
 
 
 ==================
-Time with three denominations (123:00:00)
+number.txt :: Time with three denominations (123:00:00)
 ==================
 123:00:00
 ---
@@ -81,7 +81,7 @@ Time with three denominations (123:00:00)
 
 
 ==================
-Time with decimal (03:00.456)
+number.txt :: Time with decimal (03:00.456)
 ==================
 03:00.456
 ---
@@ -95,7 +95,7 @@ Time with decimal (03:00.456)
 
 
 ==================
-Number at end of text
+number.txt :: Number at end of text
 ==================
 We're supposed to have 3
 ---
@@ -110,7 +110,7 @@ We're supposed to have 3
 
 
 ==================
-Number at end of sentence
+number.txt :: Number at end of sentence
 ==================
 We're supposed to have 3.
 ---
@@ -126,7 +126,7 @@ We're supposed to have 3.
 
 
 ==================
-Time at end of sentence
+number.txt :: Time at end of sentence
 ==================
 We're supposed to go at 3:00.
 ---
@@ -142,7 +142,7 @@ We're supposed to go at 3:00.
 
 
 ==================
-Number at end of colon subsentence
+number.txt :: Number at end of colon subsentence
 ==================
 The Furious 5: A Study
 ---

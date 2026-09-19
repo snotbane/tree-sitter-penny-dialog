@@ -1,36 +1,36 @@
 ==================
-Standalone translation
+translation.txt :: Standalone translation
 ==================
-{en}
+[en]
 ---
 (text
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 )
 
 
 ==================
-Standalone translation-locale
+translation.txt :: Standalone translation-locale
 ==================
-{en-US}
+[en-US]
 ---
 (text
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 )
 
 
 ==================
-Default then translation then text
+translation.txt :: Default then translation then text
 ==================
-Hola {en} Hello
+Hola [en] Hello
 ---
 (text
 	(pure)
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 	(pure)
 )
@@ -38,82 +38,82 @@ Hola {en} Hello
 
 
 ==================
-Default then two translations
+translation.txt :: Default then two translations
 ==================
-Hola {en} Hello {de} Bonjour
+Hola [en] Hello [de] Bonjour
 ---
 (text
 	(pure)
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 	(pure)
-	(translation
-		(translation_content)
-	)
-	(pure)
-)
-
-
-==================
-Non-latin text
-==================
-{ja} こんにちは {zh} 你好 {ar} مرحبًا
----
-(text
-	(translation
-		(translation_content)
-	)
-	(pure)
-	(translation
-		(translation_content)
-	)
-	(pure)
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 	(pure)
 )
 
 
 ==================
-Multi-line translations
+translation.txt :: Non-latin text
+==================
+[ja] こんにちは [zh] 你好 [ar] مرحبًا
+---
+(text
+	(translation_marker
+		(lang)
+	)
+	(pure)
+	(translation_marker
+		(lang)
+	)
+	(pure)
+	(translation_marker
+		(lang)
+	)
+	(pure)
+)
+
+
+==================
+translation.txt :: Multi-line translations
 ==================
 Hello
-{es} Hola
-{ja} こんにちは
-{zh} 你好
-{ar} مرحبًا
+[es] Hola
+[ja] こんにちは
+[zh] 你好
+[ar] مرحبًا
 ---
 (text
 	(pure)
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 	(pure)
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 	(pure)
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 	(pure)
-	(translation
-		(translation_content)
+	(translation_marker
+		(lang)
 	)
 	(pure)
 )
 
 
 ==================
-Invalid translation
+translation.txt :: Invalid translation
 ==================
-{ p1ckl3s } Cucumbers
+[ p1ckl3s ] Cucumbers
 ---
 (text
-	(translation
-		(translation_content_invalid)
+	(translation_marker
+		(lang_invalid)
 	)
 	(pure)
 )
