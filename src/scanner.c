@@ -52,7 +52,7 @@ bool tree_sitter_penny_dialog_external_scanner_scan(void *payload,
     }
   }
 
-  // return false;
+  return true;
 }
 
 // No persistent state needed for this scanner.
