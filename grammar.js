@@ -57,7 +57,7 @@ export default grammar({
 			seq(
 				"@",
 				alias(
-					/\.?[a-z_][a-z_0-9]*(\.[a-z_][a-z_0-9]*)*/i,
+					/\.?(?:~|[a-z_][a-z_0-9]*)(\.(?:~|[a-z_][a-z_0-9]*))*/i,
 					$.path_content,
 				),
 			),

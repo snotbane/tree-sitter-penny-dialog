@@ -44,3 +44,14 @@ path.txt :: Multi-identifier path (relative)
 		(path_content)
 	)
 )
+
+==================
+path.txt :: Narrator path
+==================
+@~.~
+---
+(text
+	(path
+		(path_content)
+	)
+)

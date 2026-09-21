@@ -206,7 +206,7 @@
           "type": "ALIAS",
           "content": {
             "type": "PATTERN",
-            "value": "\\.?[a-z_][a-z_0-9]*(\\.[a-z_][a-z_0-9]*)*",
+            "value": "\\.?(?:~|[a-z_][a-z_0-9]*)(\\.(?:~|[a-z_][a-z_0-9]*))*",
             "flags": "i"
           },
           "named": true,
