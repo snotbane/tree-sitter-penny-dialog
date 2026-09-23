@@ -268,6 +268,10 @@
         {
           "type": "SYMBOL",
           "name": "tag_end"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tag_clear"
         }
       ]
     },
@@ -356,6 +360,23 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ">"
+        }
+      ]
+    },
+    "tag_clear": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "</"
+        },
+        {
+          "type": "STRING",
+          "value": "*"
         },
         {
           "type": "STRING",

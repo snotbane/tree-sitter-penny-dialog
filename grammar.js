@@ -69,7 +69,7 @@ export default grammar({
 		lang: ($) => prec(2, /[a-z\-]+/i),
 		lang_invalid: ($) => /[^\]]+/,
 
-		_tag: ($) => choice($.tag_start, $.tag_end),
+		_tag: ($) => choice($.tag_start, $.tag_end, $.tag_clear),
 		tag_start: ($) =>
 			seq("<", optional(seq($.decor, repeat(seq("|", $.decor)))), ">"),
 
@@ -79,6 +79,8 @@ export default grammar({
 				optional(seq($.identifier, repeat(seq("|", $.identifier)))),
 				">",
 			),
+
+		tag_clear: ($) => seq("</", "*", ">"),
 
 		decor: ($) => seq($.arg, repeat(seq($.arg))),
 

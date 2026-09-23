@@ -304,3 +304,13 @@ tag.txt :: Tag containing path
 	)
 	(tag_end)
 )
+
+
+==================
+tag.txt :: Clear all tag
+==================
+</*>
+---
+(text
+	(tag_clear)
+)
