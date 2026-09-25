@@ -40,6 +40,8 @@ export default grammar({
 
 		number: ($) => choice(/\d+/, /\d+\.\d+/, /[\.]\d+/, /\d+([:\.]\d+)+/),
 
+		// color: ($) => choice(/#[a-f0-9]{6}/i, /#[a-f0-9]{8}/i),
+
 		// Pure text is displayed directly to the user without any alteration.
 		pure: ($) => prec(-1, choice($._formal, $.informal)),
 

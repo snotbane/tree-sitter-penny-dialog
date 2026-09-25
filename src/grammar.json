@@ -130,6 +130,21 @@
         }
       ]
     },
+    "color": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#[a-f0-9]{6}",
+          "flags": "i"
+        },
+        {
+          "type": "PATTERN",
+          "value": "#[a-f0-9]{8}",
+          "flags": "i"
+        }
+      ]
+    },
     "pure": {
       "type": "PREC",
       "value": -1,
